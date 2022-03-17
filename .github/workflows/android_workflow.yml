@@ -2,9 +2,13 @@ name: Android CI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - '32-bit-on-Android-12'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+      - '32-bit-on-Android-12'
 
 jobs:
   build:
