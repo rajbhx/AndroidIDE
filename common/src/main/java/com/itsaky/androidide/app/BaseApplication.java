@@ -71,7 +71,7 @@ public abstract class BaseApplication extends MultiDexApplication {
     }
     
     public static boolean isArmv7a () {
-        return isAndroid12 () || Arrays.asList (Build.SUPPORTED_ABIS).contains ("armeabi-v7a");
+        return Arrays.asList (Build.SUPPORTED_ABIS).contains ("armeabi-v7a");
     }
     
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.S)
@@ -83,9 +83,12 @@ public abstract class BaseApplication extends MultiDexApplication {
     public static String getArch () {
         if (BaseApplication.isAarch64 ()) {
             return "arm64-v8a";
-        } else if (BaseApplication.isArmv7a ()) {
+        }
+        
+        if (BaseApplication.isArmv7a ()) {
             return "armeabi-v7a";
         }
+        
         throw new UnsupportedOperationException ("Device not supported");
     }
     
